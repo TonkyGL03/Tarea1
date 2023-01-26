@@ -1,0 +1,91 @@
+#include <iostream>
+
+using namespace std;
+
+class Empleado{
+private:
+    string puesto;
+    int claveEmpleado;
+    std::string nombre;
+    std::string domicilio;
+    float sueldo;
+    std::string reportaA;
+
+public:
+    Empleado(std::string, int, std::string, std::string, float, std::string);
+    void imprime();
+    void cambioDomic();
+    void cambiaReportaA();
+    void actualSueldo();
+};
+
+Empleado::Empleado(std::string _puesto, int _claveEmpleado, std::string _nombre, std::string _domicilio, float _sueldo, std::string _reportaA){
+    puesto= _puesto;
+    claveEmpleado= _claveEmpleado;
+    nombre= _nombre;
+    domicilio= _domicilio;
+    sueldo= _sueldo;
+    reportaA= _reportaA;
+}
+
+void Empleado::imprime(){
+
+    cout << "mi puesto es:" << Empleado::puesto << endl;
+    cout << "mi nombre es: " << Empleado::nombre << endl;
+    cout << "mi clave es: " << Empleado::claveEmpleado << endl;
+    cout << "mi domicilio es:" << Empleado::domicilio << endl;
+    cout << "mi sueldo es:" << Empleado::sueldo << endl;
+    cout << "mi jefe es:" << Empleado::reportaA << endl;
+    cout << endl << endl;
+}
+
+void Empleado::cambioDomic(){
+    std::string sus;
+    cout << "dame su nuevo domicilio: " << endl;
+    scanf("%s", &sus);
+    Empleado::domicilio = sus;
+}
+
+void Empleado::cambiaReportaA(){
+    std::string sus;
+    cout << "dame ek nombre de la nueva persona a la que reporta" << endl;
+    scanf("%s", &sus);
+    Empleado::reportaA = sus;
+}
+
+void Empleado::actualSueldo(){
+    float porcentaje;
+    cout << "cuanto le quieren aumentar el sueldo(escribalo por favor con punto decimal):" << endl;
+    scanf("%f", &porcentaje);
+    Empleado::sueldo= Empleado::sueldo * (1+porcentaje);
+}
+
+
+int main(){
+    Empleado jefePlanta("JefePlanta", 12, "Guillermo Diaz", "colinas_int405", 5000.00, "Nadie");
+    Empleado jefePersonal("JefePersonal", 123, "Daniel Lopez", "Villafontana_21800", 2500.00, "Guillermo Diaz");
+    Empleado Empleado1("Empleado", 1234, "Javier Bernal", "parma_4080", 800.00, "Daniel Lopez");
+    Empleado Empleado2("Empleado", 12345, "Saul Gomez", "Varsovia_15", 800.00, "Daniel Lopez");
+
+
+    jefePlanta.imprime();
+    jefePersonal.imprime();
+    Empleado1.imprime();
+    Empleado2.imprime();
+
+    cout << "cambiaremos a continuacion el domicilio del primer empleado" << endl;
+    Empleado1.cambioDomic();
+    Empleado1.imprime();
+
+    cout << endl << endl;
+
+    cout << "aumentaremos el sueldo del segundo empleado" << endl;
+    Empleado2.actualSueldo();
+    Empleado2.imprime();
+
+    cout << endl << endl;
+
+    cout << "cambiaremos a quien reporta el primer empleado" << endl;
+    Empleado1.cambiaReportaA();
+    Empleado1.imprime();
+}
