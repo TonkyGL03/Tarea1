@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+class Materias{
+private:
+    int clave;
+    string nombre;
+    string nomProfesor;
+    string libroTexto;
+
+
+public:
+    Materias(int, string, string, string);
+    void imprime();
+    void cambiaClave();
+    void cambiaProfe();
+
+};
+
+Materias::Materias(int _clave, string _nombre, string _nomProfesor, string _libroTexto){
+    clave = _clave;
+    nombre= _nombre;
+    nomProfesor= _nomProfesor;
+    libroTexto= _libroTexto;
+};
+
+void Materias::imprime(){
+    cout << "la materia es:" << Materias::nombre << endl;
+    cout << "el profesor es: " << Materias::nomProfesor << endl;
+    cout << "la clave es: " << Materias::clave << endl;
+    cout << "el libro a utilizar es:" << Materias::libroTexto << endl;
+    cout << endl << endl;
+};
+
+void Materias::cambiaClave(){
+    int sus;
+    cout << "dame su nueva clave: " << endl;
+    scanf("%s", &sus);
+    Materias::clave = sus;
+};
+
+void Materias::cambiaProfe(){
+    string sus;
+    cout << "dame el nombre del nuevo profesor: " << endl;
+    scanf("%s", &sus);
+    Materias::nomProfesor = sus;
+};
+
+
+int main(){
+    Materias Programacion(1234, "Programacion", "Angela Rodriguez", "bienvenido a la programacion en C");
+    Materias basesDeDatos(4321, "Estructuras de Datos", "Jairo Cain", "bienvenidos a la POO");
+
+    Programacion.imprime();
+    basesDeDatos.imprime();
+
+    cout << "cambiaremos la clave de la materia de programacion" << endl;
+    Programacion.cambiaClave();
+    Programacion.imprime();
+
+    cout << endl << endl;
+
+    cout << "cambiaremos el profe de la materia bases de datos" << endl;
+    basesDeDatos.cambiaProfe();
+    basesDeDatos.imprime();
+
+    cout << endl << endl;
+
+    cout << "se imprime bases de datos" << endl;
+    basesDeDatos.imprime();
+
+
+
+};
